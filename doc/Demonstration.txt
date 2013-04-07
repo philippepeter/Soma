@@ -1,0 +1,1 @@
+La figure possède 10 coins, les pièces 2 et 3 peuvent couvrir, au mieux, deux coins en même temps alors que toutes les autres pièces ne peuvent en couvrir, au mieux, qu’un seul. Cela nous donne donc au mieux une couverture de 9 des coins de la figure. Il n’est donc pas possible de réaliser cette figure avec les pièces données.
