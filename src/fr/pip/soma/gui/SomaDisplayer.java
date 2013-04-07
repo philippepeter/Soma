@@ -1,7 +1,7 @@
 /**
- * Copyright ï¿½2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
- * sont la propriÃ©tÃ© de leur auteur.
+ * Copyright ©2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de même que la documentation associée 
+ * sont la propriété de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
@@ -44,9 +44,9 @@ import fr.pip.soma.model.Soma;
 import fr.pip.soma.parser.Parser;
 
 /**
- * Panneau dynamique d'affichage du puzzle et de ses ï¿½ventuelles solutions. Le
- * puzzle est affichÃ© en transparence et ses solutions sont des pieces opaques
- * de couleur. Le tout peut etre tournÃ© Ã  la souris.
+ * Panneau dynamique d'affichage du puzzle et de ses éventuelles solutions. Le
+ * puzzle est affiché en transparence et ses solutions sont des pieces opaques
+ * de couleur. Le tout peut etre tourné à la souris.
  * 
  * @author Philippe PETER.
  */
@@ -77,13 +77,13 @@ public class SomaDisplayer extends JPanel {
 		this.soma = soma;
 		this.colors = colors;
 		this.setLayout(new BorderLayout());
-		// CrÃ©ation de l'univers JAVA3D
+		// Création de l'univers JAVA3D
 		GraphicsConfiguration config = SimpleUniverse
 				.getPreferredConfiguration();
-		// CrÃ©ation du Canvas3D
+		// Création du Canvas3D
 		Canvas3D canvas3D = new Canvas3D(config);
 		this.add(canvas3D, BorderLayout.CENTER);
-		// CrÃ©ation de la scÃ¨ne 3D.
+		// Création de la scène 3D.
 		SimpleUniverse simpleU = new SimpleUniverse(canvas3D);
 		BranchGroup scene = createSceneGraph(simpleU);
 		scene.compile();
@@ -99,7 +99,7 @@ public class SomaDisplayer extends JPanel {
 
 		simpleU.addBranchGraph(sceneBackground);
 
-		// On dÃ©place la camÃ©ra pour mieux centrer la figure.
+		// On déplace la caméra pour mieux centrer la figure.
 		TransformGroup cameraTransform = simpleU.getViewingPlatform()
 				.getMultiTransformGroup().getTransformGroup(0);
 		Transform3D translate = new Transform3D();
@@ -115,7 +115,7 @@ public class SomaDisplayer extends JPanel {
 		Transform3D rotate = new Transform3D();
 		Transform3D tempRotate = new Transform3D();
 
-		// Rotation utilisÃ©e par la souris
+		// Rotation utilisée par la souris
 		rotate.rotX(Math.PI / 4.0d);
 		tempRotate.rotY(Math.PI / 5.0d);
 		rotate.mul(tempRotate);
@@ -128,7 +128,7 @@ public class SomaDisplayer extends JPanel {
 		myMouseRotate.setTransformGroup(objRotate);
 		myMouseRotate.setSchedulingBounds(new BoundingSphere());
 
-		// On crÃ©e le puzzle et on l'ajoute.
+		// On crée le puzzle et on l'ajoute.
 		somaBranchGroup = new BranchGroup();
 		somaBranchGroup.setCapability(BranchGroup.ALLOW_DETACH);
 		if(soma != null) {
@@ -157,13 +157,13 @@ public class SomaDisplayer extends JPanel {
 	}
 
 	/**
-	 * CrÃ©ation du Noeud Java3d du puzzle.
+	 * Création du Noeud Java3d du puzzle.
 	 * 
 	 * @return
 	 */
 	private Node getSomaNode() {
 		BranchGroup shapeBranchGroup = new BranchGroup();
-		// Pour chaque point du puzzle on crÃ©e un cube.
+		// Pour chaque point du puzzle on crée un cube.
 		for (Point3D point : soma.getPoints()) {
 			Transform3D translate = new Transform3D();
 			// Le cube ayant une taille de 1 il faut translater les points d'un
@@ -190,7 +190,7 @@ public class SomaDisplayer extends JPanel {
 			shapeBranchGroup.addChild(tg);
 		}
 
-		// On translate la figure Ã  son barycentre pour la rotation Ã  la souris.
+		// On translate la figure à son barycentre pour la rotation à la souris.
 		Transform3D translateToBarycenter = new Transform3D();
 		translateToBarycenter.setTranslation(getBarycenter(soma.getPoints()));
 		TransformGroup tgToBarycenter = new TransformGroup(
@@ -223,12 +223,12 @@ public class SomaDisplayer extends JPanel {
 	}
 
 	/**
-	 * CrÃ©Ã© un Noeud Java3D pour une figure donnÃ©e.
+	 * Créé un Noeud Java3D pour une figure donnée.
 	 */
 	private Node getShapeNode(Shape shape, Color color) {
 		BranchGroup shapeBranchGroup = new BranchGroup();
 		shapeBranchGroup.setCapability(BranchGroup.ALLOW_DETACH);
-		// Pour chaque point de la figure on crÃ©e un cube.
+		// Pour chaque point de la figure on crée un cube.
 		for (Point3D point : shape.getPoints()) {
 			Transform3D translate = new Transform3D();
 			// Le cube ayant une taille de 1 il faut translater les points d'un
@@ -346,7 +346,7 @@ public class SomaDisplayer extends JPanel {
 	}
 
 	/**
-	 * Permet de retirer une figure (Shape), non utilisÃ©
+	 * Permet de retirer une figure (Shape), non utilisé
 	 */
 	public void shapeAdded(Shape shape, int index) {
 		Node node = getShapeNode(shape, colors[index]);
@@ -363,7 +363,7 @@ public class SomaDisplayer extends JPanel {
 	}
 
 	/**
-	 * Permet de retirer une figure (Shape), non utilisÃ©
+	 * Permet de retirer une figure (Shape), non utilisé 
 	 */
 	public void shapeRemoved(Shape shape) {
 		Node toRemove = nodesMap.remove(shape);

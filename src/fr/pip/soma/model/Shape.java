@@ -1,7 +1,7 @@
 /**
- * Copyright ï¿½2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
- * sont la propriÃ©tÃ© de leur auteur.
+ * Copyright ©2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de même que la documentation associée 
+ * sont la propriété de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe reprï¿½sentant une figure composï¿½e d'une liste de points (Point3D).
- * La mÃ©thode hashcode et equals sont redefinies
+ * Classe représentant une figure composée d'une liste de points (Point3D).
+ * La méthode hashcode et equals sont redefinies
  * @author Philippe PETER.
  */
 public class Shape {
@@ -21,14 +21,14 @@ public class Shape {
 	private ArrayList<Point3D> points = new ArrayList<Point3D>();
 
 	/**
-	 * CrÃ©Ã© une nouvelle figure avec la liste des Point3D passï¿½e en paramÃ¨tres.
+	 * Créé une nouvelle figure avec la liste des Point3D passée en paramètres.
 	 */
 	public Shape(List<Point3D> pointsToAdd) {
 		points.addAll(pointsToAdd);
 	}
 
 	/**
-	 * CrÃ©Ã© une nouvelle figure avec le tableau de Point3D passï¿½ en paramÃ¨tres.
+	 * Créé une nouvelle figure avec le tableau de Point3D passé en paramètres.
 	 */
 	public Shape(Point3D... newPoints) {
 		for(Point3D point : newPoints) {
@@ -37,16 +37,16 @@ public class Shape {
 	}
 	
 	/**
-	 * Ajoute un Point3D ï¿½ la liste.
+	 * Ajoute un Point3D à la liste.
 	 * @param pointToAdd
 	 */
 	public void addPoint(Point3D pointToAdd) {
 		points.add(pointToAdd);
 	}
 	/**
-	 * CrÃ©e la mÃªme figure mais avec une translation vers le point passÃ© en paramÃ¨tre.
+	 * Crée la même figure mais avec une translation vers le point passé en paramètre.
 	 * @param point Le point ou translater la figure.
-	 * @return Une nouvelle figure translatÃ©e.
+	 * @return Une nouvelle figure translatée.
 	 */
 	public Shape getTranslatedShape(Point3D point) {
 		ArrayList<Point3D> newPoints = new ArrayList<Point3D>();

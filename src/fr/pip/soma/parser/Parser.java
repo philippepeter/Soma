@@ -1,7 +1,7 @@
 /**
- * Copyright ï¿½2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
- * sont la propriÃ©tÃ© de leur auteur.
+ * Copyright ©2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de même que la documentation associée 
+ * sont la propriété de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
@@ -58,7 +58,7 @@ public final class Parser {
 	}
 
 	/**
-	 * Lit le fichier passÃ© en paramÃ¨tre.
+	 * Lit le fichier passé en paramètre.
 	 * 
 	 * @param file
 	 * @return
@@ -145,13 +145,13 @@ public final class Parser {
 					// Le fichier n'est pas valide.
 					return null;
 				} else {
-					// Une ligne vide indique qu'on crÃ©e une nouvelle figure
+					// Une ligne vide indique qu'on crée une nouvelle figure
 					// (Shape)
 					if (values[0].equals(EMPTY_STRING)) {
 						shapes.add(new Shape(points));
 						points = new ArrayList<Point3D>();
 					} else {
-						// Lecture des coordonnÃ©es.
+						// Lecture des coordonnées.
 						int x = Integer.parseInt(values[0]);
 						int y = Integer.parseInt(values[1]);
 						int z = Integer.parseInt(values[2]);
@@ -177,5 +177,21 @@ public final class Parser {
 		return null;
 	}
 
+	// /**
+	// * Lit tous les fichiers présents dans le répertoire data.
+	// * @return
+	// */
+	// public static final List<Soma> getSomas() {
+	// ArrayList<Soma> somas = new ArrayList<Soma>();
+	// File file = new File("data");
+	// String[] files = file.list();
+	// for (int i = 0; i < files.length; i++) {
+	// File testedFile = new File("data" + File.separator + files[i]);
+	// if (!testedFile.isDirectory()) {
+	// somas.add(Parser.getSoma(testedFile.getName()));
+	// }
+	// }
+	// return somas;
+	// }
 
 }

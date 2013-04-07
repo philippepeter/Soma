@@ -1,7 +1,7 @@
 /**
- * Copyright ï¿½2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
- * sont la propriÃ©tÃ© de leur auteur.
+ * Copyright ©2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de même que la documentation associée 
+ * sont la propriété de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
@@ -16,16 +16,16 @@ import fr.pip.soma.model.Soma;
 import fr.pip.soma.parser.Parser;
 
 /**
- * Point d'entrï¿½e de l'application, construit l'IHM et dï¿½marre les threads pour
+ * Point d'entrée de l'application, construit l'IHM et démarre les threads pour
  * le calcul. L'application est PropertyChangeListener pour les actions des
- * menus et BacktrackerListener pour l'Ã©tat de l'algorithme en cours.
+ * menus et BacktrackerListener pour l'état de l'algorithme en cours.
  * 
  * @author Philippe PETER
  * 
  */
 public class Application {
 
-	/** Point d'entrÃ©e de l'application **/
+	/** Point d'entrée de l'application **/
 	public static void main(String[] args) {
 		new Application();
 	}
@@ -39,7 +39,7 @@ public class Application {
 		ApplicationFrame frame = new ApplicationFrame(soma, shapes);
 		// Listener de l'algorithme et des actions du menu.
 		AlgorithmManager listener = new AlgorithmManager(shapes, frame);
-		// On ajoute l'AlgorithmeManager en ï¿½coute du menu de la frame.
+		// On ajoute l'AlgorithmeManager en écoute du menu de la frame.
 		frame.addPropertyChangeListenerToMenus(listener);
 	}
 }

@@ -1,15 +1,15 @@
 /**
- * Copyright ï¿½2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
- * sont la propriÃ©tÃ© de leur auteur.
+ * Copyright ©2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de même que la documentation associée 
+ * sont la propriété de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
 package fr.pip.soma.model;
 
 /**
- * Un Point 3D ayant pour coordonnï¿½es x, y, z.
- * Point3D redefinit les mÃ©thodes hashcode et equals.
+ * Un Point 3D ayant pour coordonnées x, y, z.
+ * Point3D redefinit les méthodes hashcode et equals.
  * @author Philippe PETER.
  */
 public class Point3D {

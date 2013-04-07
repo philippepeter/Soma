@@ -1,7 +1,7 @@
 /**
- * Copyright ï¿½2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
- * sont la propriÃ©tÃ© de leur auteur.
+ * Copyright ©2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de même que la documentation associée 
+ * sont la propriété de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
@@ -18,8 +18,8 @@ import fr.pip.soma.model.ShapeComputer;
 import fr.pip.soma.model.Soma;
 
 /**
- * Implementation de l'interface Data. Cette classe stocke les figures testÃ©es
- * et permet de savoir si le puzzle est terminÃ©.
+ * Implementation de l'interface Data. Cette classe stocke les figures testées
+ * et permet de savoir si le puzzle est terminé.
  * 
  * @author Philippe PETER.
  * 
@@ -35,11 +35,11 @@ public class DataImpl implements Data {
 	 * chaque ajout de piece on le recalcule.
 	 **/
 	private boolean isValid = true;
-	/** Le candidat parent pour dÃ©marrer la recherche de solution **/
+	/** Le candidat parent pour démarrer la recherche de solution **/
 	private Candidate root;
-	/** Compteur de solutions trouvÃ©es **/
+	/** Compteur de solutions trouvées **/
 	private int solutionsCount = 0;
-	/** Listener pour Ã©couter l'Ã©tat de l'algorithme **/
+	/** Listener pour écouter l'état de l'algorithme **/
 	private BacktrackerListener listener;
 	/** Compteur pour connaitre le nombres de figures qui ne logent pas dans le puzzle **/
 	private int impossibleShapesCount = 0;
@@ -47,10 +47,10 @@ public class DataImpl implements Data {
 	public DataImpl(Soma soma, List<Shape> shapes, BacktrackerListener listener) {
 		this.shapes = shapes;
 		this.listener = listener;
-		// Le candidat root est le noeud de dÃ©part de l'arbre.
+		// Le candidat root est le noeud de départ de l'arbre.
 		root = new CandidateImpl(new ArrayList<Shape>(), -1);
 		Candidate father = root;
-		// On parcourt les pieces du puzzle et pour chacune on crÃ©e un Candidate
+		// On parcourt les pieces du puzzle et pour chacune on crée un Candidate
 		for (int i = 0; i < shapes.size(); i++) {
 			// On calcule toutes les rotations possibles de la piece du puzzle
 			List<Shape> rotatedshapes = ShapeComputer
@@ -58,16 +58,16 @@ public class DataImpl implements Data {
 			// On supprime les pieces identiques
 			ShapeComputer.removeSameShapesAccordingToTranslation(rotatedshapes);
 			// On calcule ensuite parmis toutes les solutions precedement
-			// calculÃ©es toutes les positions possibles dans le puzzle (celle ou
+			// calculées toutes les positions possibles dans le puzzle (celle ou
 			// la piece ne sort pas du puzzle)
 			List<Shape> allPossibilities = ShapeComputer
 					.getAllTranslatedPossibilitiesInSoma(soma, rotatedshapes);
-			// On crÃ©e le candidat avec toutes ses possibilitÃ©es.
+			// On crée le candidat avec toutes ses possibilitées.
 			Candidate candidate = new CandidateImpl(allPossibilities, i);
 			if(allPossibilities.size() == 0) {
 				impossibleShapesCount++;
 			}
-			// On le lie Ã  son pÃ¨re pour former un arbre.
+			// On le lie à son père pour former un arbre.
 			father.setChild(candidate);
 			father = candidate;
 		}
@@ -82,7 +82,7 @@ public class DataImpl implements Data {
 	}
 
 	public boolean isDone(int index) {
-		// Le puzzle est terminÃ© si on travaille sur la derniere piece et que
+		// Le puzzle est terminé si on travaille sur la derniere piece et que
 		// cet assemblage est valide.
 		return (index == shapes.size() - 1) && isValid();
 	}
@@ -92,18 +92,18 @@ public class DataImpl implements Data {
 	}
 
 	public void addTestedSolution(Candidate candidate) {
-		// On rÃ©cupere la piece testÃ©e
+		// On récupere la piece testée
 		Shape shape = ((CandidateImpl) candidate).getTestedShape();
 		// On teste si elle n'empiete pas sur une autre et on met a jour isValid en fonction.
 		testAddOf(shape);
-		// On l'ajoute au tableau des solutions testÃ©es.
+		// On l'ajoute au tableau des solutions testées.
 		solutions.add(shape);
-		// On informe le listener qu'une possibilitÃ© est testÃ©e.
+		// On informe le listener qu'une possibilité est testée.
 		listener.newTestedPossibilities(solutions);
 	}
 
 	public void removeTestedSolution(Candidate candidate) {
-		// On enleve une figure testÃ©e.
+		// On enleve une figure testée.
 		solutions.remove(solutions.size() - 1);
 		isValid = true;
 	}
@@ -114,23 +114,23 @@ public class DataImpl implements Data {
 		Shape shape = ((CandidateImpl) candidate).getTestedShape();
 		// On teste si elle n'empiete pas sur une autre et on met a jour isValid en fonction.
 		testAddOf(shape);
-		// On l'ajoute au tableau des solutions testÃ©es.
+		// On l'ajoute au tableau des solutions testées.
 		solutions.add(shape);
-		// On informe le listener qu'une possibilitÃ© est testÃ©e.
+		// On informe le listener qu'une possibilité est testée.
 		listener.newTestedPossibilities(solutions);
 	}
 
 	/**
 	 * On test si la figure (Shape) n'empiete pas sur une figure deja presente dans le puzzle.
-	 * @param shape la figure Ã  tester.
+	 * @param shape la figure à tester.
 	 */
 	private void testAddOf(Shape shape) {
 		isValid = true;
 		// On parcourt les points de la figure
 		for (Point3D point : shape.getPoints()) {
-			// Pour chaque point de la figure on parcourt les figures deja prÃ©sentes dans le puzzle
+			// Pour chaque point de la figure on parcourt les figures deja présentes dans le puzzle
 			for (Shape testedShape : solutions) {
-				// Si la figure deja presente dans le puzzle contient le point testÃ© on arrete et on met isValid Ã  false.
+				// Si la figure deja presente dans le puzzle contient le point testé on arrete et on met isValid à false.
 				if (testedShape.getPoints().contains(point)) {
 					isValid = false;
 					return;
@@ -144,9 +144,9 @@ public class DataImpl implements Data {
 	}
 
 	public void solutionFound() {
-		// On incrÃ©mente le compteur de solutions.
+		// On incrémente le compteur de solutions.
 		solutionsCount++;
-		// On informe l'Ã©couteur.
+		// On informe l'écouteur.
 		listener.done(solutions, solutionsCount);
 	}
 

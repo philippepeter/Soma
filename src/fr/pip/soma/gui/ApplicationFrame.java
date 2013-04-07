@@ -1,7 +1,7 @@
 /**
- * Copyright ï¿½2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
- * sont la propriÃ©tÃ© de leur auteur.
+ * Copyright ©2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de même que la documentation associée 
+ * sont la propriété de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
@@ -28,7 +28,7 @@ import fr.pip.soma.model.Soma;
 
 /**
  * Frame principale de l'application. Contient les menus, la liste des pieces du
- * puzzle en 3D, le puzzle et un label pour afficher l'Ã©tat de l'algorithme.
+ * puzzle en 3D, le puzzle et un label pour afficher l'état de l'algorithme.
  * 
  * @author Philippe PETER.
  */
@@ -39,13 +39,13 @@ public class ApplicationFrame extends JFrame implements PropertyChangeListener{
 	private final static Color[] COLORS = { Color.RED, Color.GREEN, Color.BLUE,
 			Color.YELLOW, Color.ORANGE, Color.CYAN, Color.MAGENTA };
 	/** Les noms pour chaque pieces du puzzle **/
-	private final static String[] NAMES = { "tricube ï¿½ V ï¿½", "tï¿½tracube ï¿½ L ï¿½",
-			"tï¿½tracube ï¿½ T ï¿½", "tï¿½tracube ï¿½ Z ï¿½", "tï¿½tracube ï¿½ A ï¿½",
-			"tï¿½tracube ï¿½ B ï¿½", "tï¿½tracube ï¿½ P ï¿½" };
+	private final static String[] NAMES = { "tricube « V »", "tétracube « L »",
+			"tétracube « T »", "tétracube « Z »", "tétracube « A »",
+			"tétracube « B »", "tétracube « P »" };
 
-	/** Panneau d'affichage 3D du puzzle vide et des solutions testÃ©es **/
+	/** Panneau d'affichage 3D du puzzle vide et des solutions testées **/
 	private SomaDisplayer somaDisplayer;
-	/** Label dynamique pour afficher l'Ã©tat de l'algorithme en cours **/
+	/** Label dynamique pour afficher l'état de l'algorithme en cours **/
 	private JLabel logLabel = new JLabel();
 	/** Les menus **/
 	private SomaMenu menus;
@@ -56,16 +56,16 @@ public class ApplicationFrame extends JFrame implements PropertyChangeListener{
 	 * Construction de l'IHM.
 	 * 
 	 * @param initSoma
-	 *            soma a charger Ã  l'initialisation.
+	 *            soma a charger à l'initialisation.
 	 * @param shapes
 	 *            pieces du puzzle.
 	 * @param listener
-	 *            listener Ã©coutant les actions sur les menus.
+	 *            listener écoutant les actions sur les menus.
 	 */
 	public ApplicationFrame(Soma initSoma, List<Shape> shapes) {
 		// Fond noir pour les panneaux 3D et swing.
 		Color backgroundColor = Color.BLACK;
-		// Panneau d'affichage du puzzle et des solutions testÃ©es//
+		// Panneau d'affichage du puzzle et des solutions testées//
 		somaDisplayer = new SomaDisplayer(initSoma, COLORS, backgroundColor,
 				new Dimension(500, 500));
 
@@ -82,10 +82,10 @@ public class ApplicationFrame extends JFrame implements PropertyChangeListener{
 				BorderLayout.NORTH);
 		centralPanel.add(somaDisplayer, BorderLayout.CENTER);
 		centralPanel.add(somaNamePanel, BorderLayout.SOUTH);
-		// Panneau contenant le label pour afficher l'Ã©tat de l'algorithme.
+		// Panneau contenant le label pour afficher l'état de l'algorithme.
 		JPanel logPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		logPanel.add(logLabel);
-		// CrÃ©ation des menus, deleguÃ© dans une classe pour plus de claretÃ©.
+		// Création des menus, delegué dans une classe pour plus de clareté.
 		menus = new SomaMenu(somaDisplayer, this);
 		menus.addPropertyChangeListener(this);
 		// Mise en place de la frame.
@@ -109,7 +109,7 @@ public class ApplicationFrame extends JFrame implements PropertyChangeListener{
 	}
 
 	/**
-	 * CrÃ©ation des panneau 3D pour chaque piece du puzzle.
+	 * Création des panneau 3D pour chaque piece du puzzle.
 	 * 
 	 * @param shapes
 	 *            Liste des pieces du puzzle.
@@ -123,7 +123,7 @@ public class ApplicationFrame extends JFrame implements PropertyChangeListener{
 		panel.setBackground(backgroundColor);
 		// Dimension pour chaque panneau
 		Dimension dimension = new Dimension(100, 100);
-		// Pour chaque piece on crÃ©Ã© un ShapePanel
+		// Pour chaque piece on crée un ShapePanel
 		for (int i = 0; i < shapes.size(); i++) {
 			panel.add(new ShapePanel(shapes.get(i), COLORS[i], backgroundColor,
 					NAMES[i], dimension));
@@ -132,7 +132,7 @@ public class ApplicationFrame extends JFrame implements PropertyChangeListener{
 	}
 
 	/**
-	 * Affiches les figures passÃ©es en paramÃ¨tre dans le puzzle.
+	 * Affiches les figures passées en paramètre dans le puzzle.
 	 * 
 	 * @param solutions
 	 */
@@ -141,7 +141,7 @@ public class ApplicationFrame extends JFrame implements PropertyChangeListener{
 	}
 
 	/**
-	 * Mise Ã  jour du label.
+	 * Mise à jour du label.
 	 * 
 	 * @param string
 	 */
@@ -161,19 +161,19 @@ public class ApplicationFrame extends JFrame implements PropertyChangeListener{
 	}
 	
 	public void addPropertyChangeListenerToMenus(PropertyChangeListener listener) {
-		// L'applicationFrame Ã©coute les actions sur les menus.
+		// L'applicationFrame écoute les actions sur les menus.
 		menus.addPropertyChangeListener(listener);
 	}
 
 	public void algoFinished(long result) {
 		menus.algoFinished();
 		// On ajoute le temps.
-		String newText = logLabel.getText() + " terminÃ© en " + result + " ms";
+		String newText = logLabel.getText() + " terminé en " + result + " ms";
 		logLabel.setText(newText);
 	}
 
 	public void propertyChange(PropertyChangeEvent evt) {
-		// On affiche le nom de la figure chargÃ©e.
+		// On affiche le nom de la figure chargée.
 		if(evt.getPropertyName().equals(SomaMenu.OPEN)) {
 			somaNameLabel.setText((String) evt.getOldValue());
 		}
