@@ -1,7 +1,7 @@
 /**
- * Copyright ©2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de même que la documentation associée 
- * sont la propriété de leur auteur.
+ * Copyright ï¿½2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
+ * sont la propriÃ©tÃ© de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
@@ -18,8 +18,8 @@ import java.util.List;
 public final class ShapeComputer {
 
 	/**
-	 * Cette méthode calcule toutes les rotations possibles à partir d'une
-	 * figure donnée.
+	 * Cette mÃ©thode calcule toutes les rotations possibles Ã  partir d'une
+	 * figure donnÃ©e.
 	 * 
 	 * @param originalShape
 	 *            La figure d'origine.
@@ -76,9 +76,9 @@ public final class ShapeComputer {
 	 * @param soma
 	 *            Le puzzle
 	 * @param shapes
-	 *            La liste des figures à translater.
+	 *            La liste des figures Ã  translater.
 	 * @return Une liste contenant toutes les translations de toutes les figures
-	 *         passées en paramètres.
+	 *         passÃ©es en paramÃ¨tres.
 	 */
 	public static List<Shape> getAllTranslatedPossibilitiesInSoma(Soma soma,
 			List<Shape> shapes) {
@@ -99,7 +99,7 @@ public final class ShapeComputer {
 
 	/**
 	 * Test si une figure est deja contenue dans une liste de figures. Cette
-	 * méthode marche aussi si les points ne sont pas dans le même ordre, d'ou
+	 * mÃ©thode marche aussi si les points ne sont pas dans le mÃªme ordre, d'ou
 	 * la non utilisation de Shape.equals().
 	 */
 	private static boolean alreadyContained(List<Shape> shapes, Shape shape) {
@@ -113,7 +113,7 @@ public final class ShapeComputer {
 
 	/**
 	 * Test si deux figures contiennent les meme points meme dans un ordre
-	 * différent.
+	 * diffÃ©rent.
 	 */
 	private static boolean pointsEquals(Shape shape1, Shape shape2) {
 		int size = shape1.getPoints().size();
@@ -205,9 +205,9 @@ public final class ShapeComputer {
 	 */
 	public static void removeSameShapesAccordingToTranslation(List<Shape> shapes) {
 		// pour chaque piece, on translate la piece sur chacun de ses points et
-		// on vérifie qu'elle n'est pas egale a une autre piece.
+		// on vÃ©rifie qu'elle n'est pas egale a une autre piece.
 		boolean doublonFound = true;
-		// Tant qu'on a trouvé un double on le supprime et on recommence.
+		// Tant qu'on a trouvÃ© un double on le supprime et on recommence.
 		while (doublonFound) {
 			doublonFound = false;
 			// Pour chaque figure
@@ -215,7 +215,7 @@ public final class ShapeComputer {
 				Shape shape = shapes.get(i);
 				// Pour chaque point de la figure
 				for (int j = 0; j < shape.getPoints().size(); j++) {
-					// Création d'un figure en translation sur le point.
+					// CrÃ©ation d'un figure en translation sur le point.
 					Shape translatedShape = shape
 							.getTranslatedShape(invertCoords(shape.getPoints()
 									.get(j)));
@@ -224,8 +224,8 @@ public final class ShapeComputer {
 						doublonFound = true;
 					}
 				}
-				// Si un doublon est trouvé on le supprime et on arrete la
-				// boucle car la liste a changé.
+				// Si un doublon est trouvÃ© on le supprime et on arrete la
+				// boucle car la liste a changÃ©.
 				if (doublonFound) {
 					shapes.remove(i);
 					break;
@@ -236,7 +236,7 @@ public final class ShapeComputer {
 	}
 
 	/**
-	 * Inversion des coordonnées d'un point, utilisé pour la translation.
+	 * Inversion des coordonnï¿½es d'un point, utilisï¿½ pour la translation.
 	 * 
 	 * @param point3d
 	 * @return

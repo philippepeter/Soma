@@ -1,7 +1,7 @@
 /**
- * Copyright ©2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de même que la documentation associée 
- * sont la propriété de leur auteur.
+ * Copyright ï¿½2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
+ * sont la propriÃ©tÃ© de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
@@ -15,7 +15,7 @@ import fr.pip.soma.model.Shape;
 
 /**
  * Implementation de l'interface Candidate.
- * Piece du puzzle contenant toutes ses possibilitées (Shape) dans le puzzle (rotations, translations).
+ * Piece du puzzle contenant toutes ses possibilitÃ©es (Shape) dans le puzzle (rotations, translations).
  * 
  * @author Philippe PETER.
  * 
@@ -23,11 +23,11 @@ import fr.pip.soma.model.Shape;
 public class CandidateImpl implements Candidate {
 
 	/**
-	 * Liste de toutes les possibilitées pour une figures donnée dans le puzzle
+	 * Liste de toutes les possibilitÃ©es pour une figures donnÃ©e dans le puzzle
 	 * (rotations et translations).
 	 **/
 	private List<Shape> allPossibilities;
-	/** Index de la possibilité testée **/
+	/** Index de la possibilitÃ© testÃ©e **/
 	private int testedIndex = 0;
 	/** Piece du puzzle suivante **/
 	private CandidateImpl child;
@@ -44,13 +44,13 @@ public class CandidateImpl implements Candidate {
 			return null;
 		} else {
 			Candidate toReturn = child.getFirstSolution();
-			// C'est data qui contient l'ensemble des Shape testées
+			// C'est data qui contient l'ensemble des Shape testÃ©es
 			data.addTestedSolution(toReturn);
 			return toReturn;
 		}
 	}
 
-	/** Incrementer les solutions revient à incrementer l'index qui pointe sur allPossibilities **/
+	/** Incrementer les solutions revient Ã  incrementer l'index qui pointe sur allPossibilities **/
 	protected Candidate getFirstSolution() {
 		testedIndex = 0;
 		return this;
@@ -63,7 +63,7 @@ public class CandidateImpl implements Candidate {
 		if (testedIndex >= allPossibilities.size()) {
 			data.removeTestedSolution(this);
 			return null;
-			//Sinon on dit a data de se mettre à jour avec la nouvelle solution.
+			//Sinon on dit a data de se mettre Ã  jour avec la nouvelle solution.
 		} else {
 			data.updateTestedSolution(this);
 			return this;
@@ -71,12 +71,12 @@ public class CandidateImpl implements Candidate {
 	}
 
 	public boolean isDone(Data data) {
-		// On demande a data si le puzzle est terminé.
+		// On demande a data si le puzzle est terminÃ©.
 		return data.isDone(this.index);
 	}
 
 	/**
-	 * Retourne la figure (Shape) actuelement testée
+	 * Retourne la figure (Shape) actuelement testÃ©e
 	 */
 	public Shape getTestedShape() {
 		if (testedIndex >= allPossibilities.size()) {

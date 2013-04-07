@@ -1,7 +1,7 @@
 /**
- * Copyright ©2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de même que la documentation associée 
- * sont la propriété de leur auteur.
+ * Copyright ï¿½2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
+ * sont la propriÃ©tÃ© de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
@@ -56,14 +56,14 @@ public class ShapePanel extends JPanel {
 		this.size = size;
 		this.setLayout(new BorderLayout());
 		this.setBackground(backgroundColor);
-		// Création de l'univers JAVA3D
+		// CrÃ©ation de l'univers JAVA3D
 		GraphicsConfiguration config = SimpleUniverse
 				.getPreferredConfiguration();
-		// Création du Canvas3D
+		// CrÃ©ation du Canvas3D
 		Canvas3D canvas3D = new Canvas3D(config);
 		this.add(canvas3D, BorderLayout.CENTER);
 		SimpleUniverse simpleU = new SimpleUniverse(canvas3D);
-		// Création de la scène 3D.
+		// CrÃ©ation de la scÃ¨ne 3D.
 		BranchGroup scene = createSceneGraph(shape, color, simpleU);
 		scene.compile();
 		simpleU.getViewingPlatform().setNominalViewingTransform();
@@ -87,7 +87,7 @@ public class ShapePanel extends JPanel {
 		panelLabel.add(label);
 		this.add(panelLabel, BorderLayout.SOUTH);
 
-		// On déplace la caméra pour mieux centrer la figure.
+		// On dÃ©place la camÃ©ra pour mieux centrer la figure.
 		TransformGroup cameraTransform = simpleU.getViewingPlatform()
 				.getMultiTransformGroup().getTransformGroup(0);
 		Transform3D translate = new Transform3D();
@@ -96,12 +96,12 @@ public class ShapePanel extends JPanel {
 	}
 
 	/**
-	 * Création de la scène.
+	 * CrÃ©ation de la scÃ¨ne.
 	 * 
 	 * @param shape
-	 *            La figure à afficher.
+	 *            La figure Ã  afficher.
 	 * @param color
-	 *            La couleur à utiliser pour la figure.
+	 *            La couleur Ã  utiliser pour la figure.
 	 * @param simpleU
 	 *            L'univers JAVA3D
 	 * @return Un Branchgroup JAVA3D contenant la figure.
@@ -112,7 +112,7 @@ public class ShapePanel extends JPanel {
 		Transform3D rotate = new Transform3D();
 		Transform3D tempRotate = new Transform3D();
 
-		// Rotation utilisée par la souris
+		// Rotation utilisÃ©e par la souris
 		rotate.rotX(Math.PI / 4.0d);
 		tempRotate.rotY(Math.PI / 5.0d);
 		rotate.mul(tempRotate);
@@ -123,7 +123,7 @@ public class ShapePanel extends JPanel {
 		myMouseRotate.setTransformGroup(objRotate);
 		myMouseRotate.setSchedulingBounds(new BoundingSphere());
 
-		// On crée la figure et on l'ajoute.
+		// On crÃ©e la figure et on l'ajoute.
 		objRotate.addChild(getShapeNode(shape, color));
 		objRoot.addChild(objRotate);
 		objRoot.addChild(myMouseRotate);
@@ -146,19 +146,19 @@ public class ShapePanel extends JPanel {
 	}
 
 	/**
-	 * Création du Node JAVA3D définissant la figure en 3D
+	 * CrÃ©ation du Node JAVA3D dÃ©finissant la figure en 3D
 	 * 
 	 * @param shape
-	 *            La figure à utiliser.
+	 *            La figure Ã  utiliser.
 	 * @param color
-	 *            La couleur à utiliser.
+	 *            La couleur Ã  utiliser.
 	 * @return Le Node JAVA3D contenant la figure.
 	 */
 	private Node getShapeNode(Shape shape, Color color) {
 		BranchGroup shapeBranchGroup = new BranchGroup();
-		// Pour chaque point de la figure on crée un cube.
+		// Pour chaque point de la figure on crÃ©e un cube.
 		for (Point3D point : shape.getPoints()) {
-			// Position du cube avec facteur 0.2 pour etre adapté au zoom.
+			// Position du cube avec facteur 0.2 pour etre adaptÃ© au zoom.
 			Transform3D translate = new Transform3D();
 			// Le cube ayant une taille de 1 il faut translater les points d'un
 			// facteur 2 auquel on ajoute 0.1 pour faire un leger espace
@@ -176,7 +176,7 @@ public class ShapePanel extends JPanel {
 			appearance.setMaterial(mat);
 			appearance.setColoringAttributes(new ColoringAttributes(
 					new Color3f(color), ColoringAttributes.SHADE_GOURAUD));
-			// Création du cube.
+			// CrÃ©ation du cube.
 			Box box = new Box(1f, 1f, 1f, appearance);
 
 			TransformGroup tg = new TransformGroup(translate);
@@ -184,7 +184,7 @@ public class ShapePanel extends JPanel {
 			shapeBranchGroup.addChild(tg);
 		}
 
-		// On translate la figure à son barycentre pour la rotation à la souris.
+		// On translate la figure Ã  son barycentre pour la rotation Ã  la souris.
 		Transform3D translateToBarycenter = new Transform3D();
 		translateToBarycenter.setTranslation(getBarycenter(shape));
 		TransformGroup tgToBarycenter = new TransformGroup(

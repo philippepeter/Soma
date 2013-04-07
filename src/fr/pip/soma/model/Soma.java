@@ -1,7 +1,7 @@
 /**
- * Copyright ©2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de même que la documentation associée 
- * sont la propriété de leur auteur.
+ * Copyright ï¿½2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
+ * sont la propriÃ©tÃ© de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * Puzzle à résoudre, il est défini par une liste de points.
+ * Puzzle Ã  rÃ©soudre, il est dï¿½fini par une liste de points.
  * 
  * @author Philippe PETER.
  */
@@ -40,18 +40,18 @@ public class Soma {
 			boolean isOutSide = true;
 			// Pour chaque point du puzzle
 			for (Point3D somaPoint : points) {
-				// Si un des points du puzzle est egal au point testé, ce point
+				// Si un des points du puzzle est egal au point testÃ©, ce point
 				// est bien dans le puzzle.
 				if (somaPoint.equals(point)) {
 					isOutSide = false;
 				}
 			}
-			// Si un des point a été trouvé en dehors on renvoie false.
+			// Si un des point a Ã©tÃ© trouvÃ© en dehors on renvoie false.
 			if (isOutSide) {
 				return false;
 			}
 		}
-		// Si tous les points ont été trouvé dans le puzzle.
+		// Si tous les points ont Ã©tÃ© trouvÃ© dans le puzzle.
 		return true;
 	}
 

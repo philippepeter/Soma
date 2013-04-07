@@ -1,15 +1,15 @@
 /**
- * Copyright ©2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de même que la documentation associée 
- * sont la propriété de leur auteur.
+ * Copyright ï¿½2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
+ * sont la propriÃ©tÃ© de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
 package fr.pip.soma.algo.backtracking;
 
 /**
- * Classe générique permettant d'executer un algorithme de retour sur trace (backtracking)
- * L'algorithme suivant est inspiré de sa définition sur wikipedia:
+ * Classe gÃ©nÃ©rique permettant d'executer un algorithme de retour sur trace (backtracking)
+ * L'algorithme suivant est inspirï¿½ de sa dï¿½finition sur wikipedia:
  * http://en.wikipedia.org/wiki/Backtracking
  * 
  * @author Philippe PETER
@@ -17,9 +17,9 @@ package fr.pip.soma.algo.backtracking;
  */
 public class BacktrackerResolver {
 
-	/** Une solution est trouvée **/
+	/** Une solution est trouvÃ©e **/
 	private boolean isDone;
-	/** L'algorithme doit s'arreter si une solution est trouvée **/
+	/** L'algorithme doit s'arreter si une solution est trouvÃ©e **/
 	private boolean stopOnSolutionFound;
 	/** boolean pour provoquer l'arret du calcul **/
 	private boolean mustStop;
@@ -29,10 +29,10 @@ public class BacktrackerResolver {
 	}
 
 	/**
-	 * Démarre l'algorithme.
-	 * @param data Les données d'entrée.
+	 * Dï¿½marre l'algorithme.
+	 * @param data Les donnÃ©es d'entrÃ©e.
 	 * @param root Le candidat parent.
-	 * @return L'algorithme s'est terminé et a trouvé au moins une solution.
+	 * @return L'algorithme s'est terminÃ© et a trouvÃ© au moins une solution.
 	 */
 	public boolean resolve(Data data, Candidate root) {
 		mustStop = false;
@@ -41,10 +41,10 @@ public class BacktrackerResolver {
 	}
 
 	/**
-	 * Méthode appelée recursivement pour appeler toutes les solutions d'un arbre de Candidate.
+	 * MÃ©thode appelÃ©e recursivement pour appeler toutes les solutions d'un arbre de Candidate.
 	 */
 	private void backTrack(Data data, Candidate candidate) {
-		// On arrete l'algorithme si une solution a été trouvée ou si l'arret est provoqué.
+		// On arrete l'algorithme si une solution a Ã©tÃ© trouvÃ©e ou si l'arret est provoquÃ©.
 		if ((isDone && stopOnSolutionFound) || mustStop) {
 				return;
 		}
@@ -59,7 +59,7 @@ public class BacktrackerResolver {
 		}
 		// On appelle la premiere extension du candidat courant.
 		Candidate newCandidate = candidate.getFirstExtension(data, candidate);
-		// On parcourt toutes les possibilités de cette extension
+		// On parcourt toutes les possibilitÃ©s de cette extension
 		while (newCandidate != null) {
 			// Appel recursif
 			backTrack(data, newCandidate);

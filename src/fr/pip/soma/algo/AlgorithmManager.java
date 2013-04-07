@@ -1,7 +1,7 @@
 /**
- * Copyright ©2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de même que la documentation associée 
- * sont la propriété de leur auteur.
+ * Copyright ï¿½2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de mï¿½me que la documentation associï¿½e 
+ * sont la propriï¿½tï¿½ de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
@@ -22,8 +22,8 @@ import fr.pip.soma.model.Shape;
 import fr.pip.soma.model.Soma;
 
 /**
- * Manager d'algorithme, démarre les algorithmes de resolution sur demande
- * (PropertyChangeListener) et notifie les changements d'état de l'algorithme à
+ * Manager d'algorithme, dÃ©marre les algorithmes de resolution sur demande
+ * (PropertyChangeListener) et notifie les changements d'Ã©tat de l'algorithme ï¿½
  * l'ApplicationFrame.
  * 
  * @author Pip
@@ -31,9 +31,9 @@ import fr.pip.soma.model.Soma;
  */
 public class AlgorithmManager implements BacktrackerListener,
 		PropertyChangeListener {
-	private final static String SOLUTIONSFOUND = "Solutions trouvées : ";
-	private final static String ITERATION = " Itération : ";
-	private final static String DEFAULT_TEXT = "Choisissez un puzzle et lancez la résolution via le menu, vous pouvez faire tourner les pièces et le puzzle avec la souris.";
+	private final static String SOLUTIONSFOUND = "Solutions trouvÃ©es : ";
+	private final static String ITERATION = " ItÃ©ration : ";
+	private final static String DEFAULT_TEXT = "Choisissez un puzzle et lancez la rÃ©solution via le menu, vous pouvez faire tourner les piÃ©ces et le puzzle avec la souris.";
 
 	/** Pour gagner en performances on echantillone les iterations **/
 	private int samplingRate = 100;
@@ -66,11 +66,11 @@ public class AlgorithmManager implements BacktrackerListener,
 	}
 
 	/**
-	 * Cette méthode est appelée par l'algorithme de retour sur trace lorsqu'une
-	 * solution est trouvée.
+	 * Cette mï¿½thode est appelï¿½e par l'algorithme de retour sur trace lorsqu'une
+	 * solution est trouvÃ©e.
 	 */
 	public void done(List<Shape> solutions, int solution) {
-		// Une solution est trouvée
+		// Une solution est trouvÃ©e
 		solutionsIndex++;
 		// On affiche la solution
 		frame.displayListOfShapes(solutions);
@@ -80,11 +80,11 @@ public class AlgorithmManager implements BacktrackerListener,
 	}
 
 	/**
-	 * Cette méthode est appelée par l'algorithme de retour sur trace lorsqu'une
-	 * solution est testée.
+	 * Cette mï¿½thode est appelï¿½e par l'algorithme de retour sur trace lorsqu'une
+	 * solution est testï¿½e.
 	 */
 	public void newTestedPossibilities(List<Shape> solutions) {
-		// Une possibilitée a été testée
+		// Une possibilitÃ©e a Ã©tÃ© testÃ©e
 		iteration++;
 		// On echantillonne le setText qui ralentit l'algorithme.
 		if (iteration % samplingRate == 0) {
@@ -95,17 +95,17 @@ public class AlgorithmManager implements BacktrackerListener,
 	}
 
 	/**
-	 * Méthode appelée par les menus.
+	 * MÃ©thode appelï¿½e par les menus.
 	 */
 	public void propertyChange(PropertyChangeEvent evt) {
-		// Demande de trouver une solution. On démarre un Thread.
+		// Demande de trouver une solution. On dÃ©marre un Thread.
 		if (evt.getPropertyName().equals(SomaMenu.RESOLVE1)) {
 			new Thread() {
 				public void run() {
 					resolveOne();
 				};
 			}.start();
-			// Demande de trouver toutes les solutions. On démarre un Thread.
+			// Demande de trouver toutes les solutions. On dÃ©marre un Thread.
 		} else if (evt.getPropertyName().equals(SomaMenu.RESOLVE_ALL)) {
 			new Thread() {
 				public void run() {
@@ -115,7 +115,7 @@ public class AlgorithmManager implements BacktrackerListener,
 		} else if (evt.getPropertyName().equals(SomaMenu.STOP)) {
 			backTrackResolver.stop();
 		} else if (evt.getPropertyName().equals(SomaMenu.OPEN)) {
-			// Si le nombre de cubes dans le puzzle est différent du nombre de
+			// Si le nombre de cubes dans le puzzle est diffÃ©rent du nombre de
 			// cubes disponible le puzzle n'est pas valide.
 			int somaPoints = ((Soma) evt.getNewValue()).getPoints().size();
 			if (somaPoints != shapesPointsCount) {
@@ -129,18 +129,18 @@ public class AlgorithmManager implements BacktrackerListener,
 
 	/**
 	 * Recherche de toutes les solutions d'un puzzle. On avertit l'utilisateur
-	 * que le programme ne supprime pas les solutions symétriques et que par
-	 * consequent cette méthode peut etre longue.
+	 * que le programme ne supprime pas les solutions symÃ©triques et que par
+	 * consequent cette mÃ©thode peut etre longue.
 	 */
 	protected void resolveAll() {
 		if (frame.getCurrentSoma() != null) {
 			JOptionPane
 					.showMessageDialog(
 							frame,
-							"Les symétries ne sont pas gérées, la recherche de toutes les solutions peut etre long",
+							"Les symÃ©tries ne sont pas gÃ©rÃ©es, la recherche de toutes les solutions peut etre long",
 							"Attention", JOptionPane.WARNING_MESSAGE);
 
-			// Le nombre de solutions est très grand on echantillonne tous les
+			// Le nombre de solutions est trÃ©s grand on echantillonne tous les
 			// 100000.
 			samplingRate = 100000;
 
@@ -162,11 +162,11 @@ public class AlgorithmManager implements BacktrackerListener,
 	}
 
 	/**
-	 * Démarrage de l'algorithme, si aucune solution n'est trouvée on affiche un
+	 * DÃ©marrage de l'algorithme, si aucune solution n'est trouvÃ©e on affiche un
 	 * dialogue d'erreur.
 	 * 
 	 * @param stopOnSolutionFound
-	 *            arrete l'algorithme en cas de solution trouvée.
+	 *            arrete l'algorithme en cas de solution trouvÃ©e.
 	 */
 	private void startAlgo(boolean stopOnSolutionFound) {
 		beginTime = System.currentTimeMillis();;
@@ -175,7 +175,7 @@ public class AlgorithmManager implements BacktrackerListener,
 		frame.setLogLabelText("Initialisation de l'algorithme...");
 		// Creation de l'algorithme.
 		backTrackResolver = new BacktrackerResolver(stopOnSolutionFound);
-		// Creation des données.
+		// Creation des donnÃ©es.
 		DataImpl data = new DataImpl(frame.getCurrentSoma(), shapes,
 				AlgorithmManager.this);
 		// Si des figures ne sont pas placable dans le puzzle on ne lance pas le
@@ -183,14 +183,14 @@ public class AlgorithmManager implements BacktrackerListener,
 		if (data.getImpossibleShapesCount() != 0) {
 			JOptionPane.showMessageDialog(frame, data
 					.getImpossibleShapesCount()
-					+ " pièces ne rentrent pas dans le puzzle",
+					+ " piÃ©ces ne rentrent pas dans le puzzle",
 					"Aucune solution", JOptionPane.ERROR_MESSAGE);
 			frame.setLogLabelText(DEFAULT_TEXT);
 		} else {
-			// Démarrage
+			// DÃ©marrage
 			boolean hasSolution = backTrackResolver.resolve(data, data
 					.getRoot());
-			// Si il n'y a pas de solution et qu'on a pas manuellement stoppé
+			// Si il n'y a pas de solution et qu'on a pas manuellement stoppÃ©
 			// l'algorithme.
 			if (!hasSolution && !backTrackResolver.getStopped()) {
 				JOptionPane.showMessageDialog(frame,

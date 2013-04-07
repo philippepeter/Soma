@@ -1,7 +1,7 @@
 /**
- * Copyright ©2009 Philippe PETER.
- * Les sources qui constituent ce projet Soma de même que la documentation associée 
- * sont la propriété de leur auteur.
+ * Copyright ï¿½2009 Philippe PETER.
+ * Les sources qui constituent ce projet Soma de mÃªme que la documentation associÃ©e 
+ * sont la propriÃ©tÃ© de leur auteur.
  * Je donne mon accord au site developpez.com pour l'utilisation de tout ou partie 
  * des sources et de la documentation de ce projet dans les pages developpez.com
  */
@@ -57,7 +57,7 @@ public class SomaMenu extends JMenuBar {
 		menu.setMnemonic('F');
 		menu.add(getFileOpenMenu());
 
-		// Menu résoudre.
+		// Menu rÃ©soudre.
 		JMenuItem resolveItem = new JMenuItem(new AbstractAction(
 				"Rechercher une solution") {
 
@@ -162,7 +162,7 @@ public class SomaMenu extends JMenuBar {
 	}
 
 	/**
-	 * Création d'un menu contenant tous les puzzle préchargés dans le package
+	 * CrÃ©ation d'un menu contenant tous les puzzle prÃ©chargÃ©s dans le package
 	 * fr.pip.soma.parser.
 	 * 
 	 * @return
@@ -171,7 +171,7 @@ public class SomaMenu extends JMenuBar {
 		JMenu menuOpen = new JMenu("Ouvrir");
 		menuOpen.setMnemonic('O');
 		final DecimalFormat formatter = new DecimalFormat("000");
-		// On crée un menu par fichier.
+		// On crÃ©e un menu par fichier.
 		for (int i = 0; i < 21; i++) {
 			final int index = i;
 			final String indexString = formatter.format(index);
